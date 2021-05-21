@@ -4,6 +4,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 public class ModuleDetailActivity extends AppCompatActivity {
@@ -13,6 +15,7 @@ public class ModuleDetailActivity extends AppCompatActivity {
     TextView Sem;
     TextView MCredit;
     TextView Venue;
+    Button btnback;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -23,6 +26,7 @@ public class ModuleDetailActivity extends AppCompatActivity {
         Sem=findViewById(R.id.textViewSemester);
         MCredit=findViewById(R.id.textViewMCredit);
         Venue=findViewById(R.id.textViewVenue);
+        btnback=findViewById(R.id.buttonback);
 
         String Code = getIntent().getStringExtra("Code");
         String Name = getIntent().getStringExtra("Name");
@@ -36,6 +40,12 @@ public class ModuleDetailActivity extends AppCompatActivity {
         Sem.setText(Sems);
         MCredit.setText(Credit);
         Venue.setText(Venues);
-
+        btnback.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(ModuleDetailActivity.this,MainActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 }
